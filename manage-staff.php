@@ -193,7 +193,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                    <?php
+                                        include 'connection.php';
+
+                                        $query = "select *from users where role_name != 'Admin'";
+                                        $result = mysqli_query($conn, $query);
+                                        $c=1;
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo "<tr>";
+                                            echo "<td>".$c."</td>";
+                                            echo "<td>".$row['name']."</td>";
+                                            echo "<td>".$row['role_name']."</td>";
+                                            echo "<td>".$row['contact']."</td>";
+                                            echo "<td class = 'edit'> <button type='button' class='btn btn-primary mt-3 mb-0'><span class='ti-pencil-alt'></span> EDIT</button>";
+                                            echo "<button type='button' class='btn btn-danger mt-3 mb-0'><span class='ti-trash'></span> DELETE</button></td>";
+                                            echo "</tr>";
+                                            $c++;
+                                        }
+                                            ?>
+                                        <!-- <tr>
+
+                                            
                                             <td>01</td>
                                             <td>Prem Mehta</td>
                                             <td>Super Admin</td>
@@ -233,7 +253,7 @@
                                                 <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
                                             </td>
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <!--Export links-->
@@ -250,7 +270,7 @@
                                         </li>
                                         <li class="page-item">
                                             <a class="page-link" href="#"><span class="ti-align-justify"></span> Excel</a>
-                                        </li>
+                                        </li>`      
                                     </ul>
                                 </nav>
                                 <!-- /Export links-->
