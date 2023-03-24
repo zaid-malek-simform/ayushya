@@ -67,3 +67,57 @@
 
 </html>
 <!-- end document-->
+
+<?php
+session_start();
+ 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if(isset($_))  
+  $email = $_POST['email']; 
+  $password = $_POST['pass'];
+ 
+  
+  $conn = mysqli_connect('localhost', 'root', 'password', 'ayushya');
+ 
+  
+  $stmt = mysqli_prepare($conn, "SELECT id, role_id, password FROM users WHERE email = ?");
+ 
+  
+  mysqli_stmt_bind_param($stmt, 's', $email);
+  mysqli_stmt_execute($stmt);
+ 
+  
+  mysqli_stmt_bind_result($stmt, $user_id, $role_id, $hashed_password);
+  mysqli_stmt_fetch($stmt);
+ 
+  
+  if (password_verify($password, $hashed_password)) {
+    
+    $_SESSION['user_id'] = $user_id;
+    $_SESSION['role_id'] = $role_id;
+ 
+    
+    if ($role_id == 1) {
+      
+    //   header('Location: doctor_dashboard.php');
+      exit();
+    } else if ($role_id == 2) {
+      
+    //   header('Location: superadmin_dashboard.php');
+      exit();
+    } else if ($role_id == 3) {
+      
+    //   header('Location: receptionist_dashboard.php');
+      exit();
+    }
+  } else {
+    
+    $error_msg = "Invalid email or password";
+  }
+ 
+  
+  mysqli_stmt_close($stmt);
+  mysqli_close($conn);
+}
+?>
+ 
