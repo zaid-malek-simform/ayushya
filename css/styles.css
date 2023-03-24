@@ -42,6 +42,17 @@ Author URI: https://themeforest.net/user/konnectcode
 /*=======================
  		General
 ====================== */
+.addstaff{
+	text-align: center;
+	justify-content: right;
+	border-radius: 20px;
+	width: 140px;
+	background-color: #E57498;
+	color: white;
+	border: 0px;
+	padding: 07px;
+	outline: none !important;
+}
 
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -142,6 +153,8 @@ a:focus {
 
 .table td,
 .table th {
+	vertical-align: middle;
+	text-align: center;
 	padding: .75rem;
 }
 
