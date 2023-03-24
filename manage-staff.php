@@ -179,7 +179,88 @@
                     <div class="col-md-12">
                         <div class="widget-area-2 proclinic-box-shadow">
                             <h3 class="widget-title">Staff Details</h3>
-                            <a href="www.prempmehta.ml"><button class="addstaff">Add Staff</button></a>
+                            <!-- <button class="addstaff btn btn-info btn-lg"" data-toggle=" modal" data-target="#myModal">Add Staff</button> -->
+                            <div id="testmodal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <!-- <h4 class="modal-title">Confirmation</h4> -->
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="patient-name">Name</label>
+                                                        <input type="text" class="form-control" placeholder="Patient name" id="patient-name">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="gender">Role</label>
+                                                        <select class="form-control" id="gender">
+                                                            <option>Doctor</option>
+                                                            <option>Receptionist</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="phone">Phone</label>
+                                                        <input type="text" placeholder="Phone" class="form-control" id="phone">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" placeholder="email" class="form-control" id="Email">
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="exampleFormControlTextarea1">Address</label>
+                                                        <textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="file">File</label>
+                                                        <input type="file" class="form-control" id="file">
+                                                    </div>
+
+                                                    <div class="form-check col-md-12 mb-2">
+                                                        <div class="text-left">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" type="checkbox" id="ex-check-2">
+                                                                <label class="custom-control-label" for="ex-check-2">Please Confirm</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="testmodal-1" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Confirmation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Do you want to save changes you made to document before closing?</p>
+                                            <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="element" class="addstaff btn btn-info btn-lg btn btn-default show-modal">Add Staff</div>
+                            <!-- <div class="btn btn-default key-disable">show modal whith keyboard disabled</div> -->
+
+
+
+
                             <div class="table-responsive mb-3">
                                 <table id="tableId" class="table table-bordered table-striped">
                                     <thead>
@@ -218,37 +299,112 @@
                                             <td>Prem Mehta</td>
                                             <td>Super Admin</td>
                                             <td>333-444-7777</td>
-                                            <td  class="edit">
+                                            <td class="edit">
                                                 <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
-                                                <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
+                                                <button type="button" class="btn btn-danger mt-3 mb-0 addstaff btn btn-info btn-lg"><span class="ti-trash"></span> DELETE</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                        <td>02</td>
+                                            <td>02</td>
                                             <td>Manoj Kumar</td>
                                             <td>Doctor</td>
                                             <td>333-444-7777</td>
-                                            <td  class="edit">
+                                            <td class="edit">
                                                 <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
                                                 <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                        <td>03</td>
+                                            <td>03</td>
                                             <td>Riya </td>
                                             <td>Doctor</td>
                                             <td>333-444-7777</td>
-                                            <td  class="edit">
-                                                <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
-                                                <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
+                                            <td class="edit">
+                                                <div id="testmodal" class="modal fade">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <!-- <h4 class="modal-title">Confirmation</h4> -->
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="patient-name">Name</label>
+                                                                            <input type="text" class="form-control" placeholder="Patient name" id="patient-name">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="gender">Role</label>
+                                                                            <select class="form-control" id="gender">
+                                                                                <option>Doctor</option>
+                                                                                <option>Receptionist</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="phone">Phone</label>
+                                                                            <input type="text" placeholder="Phone" class="form-control" id="phone">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="email">Email</label>
+                                                                            <input type="email" placeholder="email" class="form-control" id="Email">
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <label for="exampleFormControlTextarea1">Address</label>
+                                                                            <textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <label for="file">File</label>
+                                                                            <input type="file" class="form-control" id="file">
+                                                                        </div>
+
+                                                                        <div class="form-check col-md-12 mb-2">
+                                                                            <div class="text-left">
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input class="custom-control-input" type="checkbox" id="ex-check-2">
+                                                                                    <label class="custom-control-label" for="ex-check-2">Please Confirm</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="testmodal-1" class="modal fade">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title">Confirmation</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Do you want to save changes you made to document before closing?</p>
+                                                                <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="element" class="btn btn-default btn btn-primary mt-3 mb-0 show-modal">Edit Staff</div>
+                                                <button type="button" class="btn btn-danger mt-3 mb-0"></span> DELETE</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                        <td>04</td>
+                                            <td>04</td>
                                             <td>Paul</td>
                                             <td>Receptionist</td>
                                             <td>333-444-7777</td>
-                                            <td  class="edit">
+                                            <td class="edit">
                                                 <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
                                                 <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
                                             </td>
@@ -307,5 +463,26 @@
 
 
 <!-- Mirrored from www.konnectplugins.com/proclinic/Vertical/patients.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2023 05:55:51 GMT -->
+<script>
+    $(document).ready(function() {
+        var show_btn = $('.show-modal');
+        var show_btn = $('.show-modal');
+        //$("#testmodal").modal('show');
+
+        show_btn.click(function() {
+            $("#testmodal").modal('show');
+        })
+    });
+
+    $(function() {
+        $('#element').on('click', function(e) {
+            Custombox.open({
+                target: '#testmodal-1',
+                effect: 'fadein'
+            });
+            e.preventDefault();
+        });
+    });
+</script>
 
 </html>
