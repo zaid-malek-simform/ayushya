@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2023 at 12:11 PM
+-- Generation Time: Apr 02, 2023 at 06:47 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ayushya`
 --
-CREATE DATABASE IF NOT EXISTS `ayushya` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ayushya`;
 
 -- --------------------------------------------------------
 
@@ -29,17 +27,13 @@ USE `ayushya`;
 -- Table structure for table `appointments`
 --
 
-DROP TABLE IF EXISTS `appointments`;
-CREATE TABLE IF NOT EXISTS `appointments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
   `doc_id` int(11) NOT NULL,
   `complaint` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `fk_p_id` (`p_id`),
-  KEY `fk_doc_id` (`doc_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -48,16 +42,13 @@ CREATE TABLE IF NOT EXISTS `appointments` (
 -- Table structure for table `bill`
 --
 
-DROP TABLE IF EXISTS `bill`;
-CREATE TABLE IF NOT EXISTS `bill` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bill` (
+  `id` int(11) NOT NULL,
   `ap_id` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `payment_mode` varchar(20) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `fk_appoin_id` (`ap_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,18 +57,15 @@ CREATE TABLE IF NOT EXISTS `bill` (
 -- Table structure for table `examine`
 --
 
-DROP TABLE IF EXISTS `examine`;
-CREATE TABLE IF NOT EXISTS `examine` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `examine` (
+  `id` int(11) NOT NULL,
   `ap_id` int(11) NOT NULL,
   `parameter` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`parameter`)),
   `doc_finding` varchar(255) DEFAULT NULL,
   `advice` varchar(255) DEFAULT NULL,
   `follow_up_date` date DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `fk_app_id` (`ap_id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,9 +74,8 @@ CREATE TABLE IF NOT EXISTS `examine` (
 -- Table structure for table `patient`
 --
 
-DROP TABLE IF EXISTS `patient`;
-CREATE TABLE IF NOT EXISTS `patient` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `patient` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -99,8 +86,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `image` varchar(50) DEFAULT NULL,
   `bloodgroup` varchar(10) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -109,12 +95,9 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Table structure for table `token`
 --
 
-DROP TABLE IF EXISTS `token`;
-CREATE TABLE IF NOT EXISTS `token` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ap_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_ap_id` (`ap_id`)
+CREATE TABLE `token` (
+  `id` int(11) NOT NULL,
+  `ap_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -123,21 +106,112 @@ CREATE TABLE IF NOT EXISTS `token` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `phone` (`phone`),
-  UNIQUE KEY `password` (`password`)
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `phone`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Zaid', 'zaid@gmail.com', '9898987878', '81dc9bdb52d04dc20036dbd8313ed055', 'admin', '2023-04-01 15:06:58', '2023-04-01 15:06:58'),
+(3, 'Doctor X', 'dr@mbbs.co', '9898776656', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor', '2023-04-01 16:22:37', '2023-04-02 11:43:45'),
+(4, 'Receptionist', 'aa@gmail.com', '9876543211', 'e10adc3949ba59abbe56e057f20f883e', 'receptionist', '2023-04-01 16:25:51', '2023-04-01 16:25:51');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_p_id` (`p_id`),
+  ADD KEY `fk_doc_id` (`doc_id`);
+
+--
+-- Indexes for table `bill`
+--
+ALTER TABLE `bill`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_appoin_id` (`ap_id`);
+
+--
+-- Indexes for table `examine`
+--
+ALTER TABLE `examine`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_app_id` (`ap_id`);
+
+--
+-- Indexes for table `patient`
+--
+ALTER TABLE `patient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `token`
+--
+ALTER TABLE `token`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_ap_id` (`ap_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `bill`
+--
+ALTER TABLE `bill`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `examine`
+--
+ALTER TABLE `examine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `patient`
+--
+ALTER TABLE `patient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `token`
+--
+ALTER TABLE `token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

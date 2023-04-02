@@ -22,7 +22,7 @@ require ("head.php");
 	<div class="wrapper">
 		<!-- Sidebar -->
 		<?php
-		include_once ("doctor-nav.php");
+		include_once ("recep-nav.php");
 		?>
 		<!-- /Sidebar -->
 		<!-- Page Content -->
@@ -36,7 +36,7 @@ require ("head.php");
 			<!-- Page Title -->
 			<div class="row no-margin-padding">
 				<div class="col-md-6">
-					<h3 class="block-title">Quick Statistics</h3>
+					<h3 class="block-title">Receptionist Dashboard</h3>
 				</div>
 				<div class="col-md-6">
 					<ol class="breadcrumb">
@@ -100,180 +100,38 @@ require ("head.php");
 					</div>
 					<!-- /Widget Item -->
 				</div>
-
-
+				<div class="row">
+					<button type="button" class="btn btn-primary btnnew mt-3 ml-2"> New Case </button> 
+					<button type="button" class="btn btn-secondary btnexist mt-3 ml-5"> Existing Case </button> 
+				</div>	
+				
 				<div class="row">
 					<!-- Widget Item -->
-					<div class="col-md-12">
+					<div class="col-sm-6">
 						<div class="widget-area-2 proclinic-box-shadow">
-							<h3 class="widget-title">Appointments</h3>
+							<h3 class="widget-title">Next Appointment</h3>
 							<div class="table-responsive">
-								<table class="table table-bordered table-striped">
+								<table class="table table1 table-bordered">
 									<thead>
 										<tr>
+											<th>Token No.</th>
 											<th>Patient Name</th>
-											<th>Doctor</th>
-											<th>Check-Up</th>
-											<th>Date</th>
-											<th>Time</th>
 											<th>Status</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>Rajesh</td>
-											<td>Manoj Kumar</td>
 											<td>Dental</td>
-											<td>12-10-2018</td>
-											<td>12:10PM</td>
 											<td>
-												<span class="badge badge-success">Completed</span>
+												<span class="badge badge-success">Available</span>
 											</td>
 										</tr>
-										<tr>
-											<td>Riya</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:10PM</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-										<tr>
-											<td>Rajesh</td>
-											<td>Manoj Kumar</td>
-											<td>Dental</td>
-											<td>12-10-2018</td>
-											<td>12:10PM</td>
-											<td>
-												<span class="badge badge-success">Completed</span>
-											</td>
-										</tr>
-										<tr>
-											<td>Riya</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:10PM</td>
-											<td>
-												<span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-										<tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-                                            <span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-                                            <span class="badge badge-warning">Pending</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
-                                        <tr>
-											<td>Siri</td>
-											<td>Daniel </td>
-											<td>Ortho</td>
-											<td>12-10-2018</td>
-											<td>1:30PM</td>
-											<td>
-												<span class="badge badge-danger">Cancelled</span>
-											</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
-						</div>
-					</div>
-					<!-- /Widget Item -->
-				</div>
 
-				<div class="row">
-					<!-- Widget Item -->
-					<div class="col-sm-6">
-						<div class="widget-area-2 proclinic-box-shadow">
-							<h3 class="widget-title">Appointments Status</h3>
-							<div id="donutMorris" class="chart-home"></div>
 						</div>
 					</div>
 					<!-- /Widget Item -->
@@ -326,7 +184,56 @@ require ("head.php");
 						</div>
 					</div>
 					<!-- /Widget Item -->
-
+					<!-- modal new patient -->
+					<div class="modal proclinic-modal-lg" id="newPatient" tabindex="-1" role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-lorvens">
+									<div class="modal-content proclinic-box-shadow2">
+										<div class="modal-header">
+											<h5 class="modal-title">New Case</h5>
+											<span class="ti-close" data-dismiss="modal" aria-label="Close">
+											</span>
+										</div>
+										<div class="modal-body">
+											<form>
+												<div class="form-group">
+													<label for="name"> Patient Name* </label>
+													<input type="text" class="form-control" id="name" placeholder="Patient Name" required>
+												</div>
+												<div class="form-group">
+													<label for="contact"> Patient Contact </label>
+													<input type="text" class="form-control" id="contact" placeholder="Patient Contact">
+												</div>
+												<div class="form-group">
+													<label for="email"> Patient Email </label>
+													<input type="email" class="form-control" id="email" placeholder="Patient Email">
+												</div>
+												<div class="form-group">
+													<label for="city"> Patient City* </label>
+													<input type="text" class="form-control" id="city" placeholder="Patient City" required>
+												</div>
+												<div class="form-group">
+													<label for="gender"> Patient gender* </label>
+													<div class="gender-control">
+														<input type="radio" name="gender" id="male" value="Male" class="gender" required> Male
+														<input type="radio" name="gender" id="female" value="Female"  class="gender"> Female
+														<input type="radio" name="gender" id="other" value="Other"  class="gender"> Other
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="DOB"> Birth Date* </label>
+													<input type="date" class="form-control" name="dob" id="DOB" required>
+												</div>
+												<div class="form-group">
+													<label for="BG"> Blood Group </label>
+													<input type="text" class="form-control" id="BG" name="blood">
+												</div>
+												
+												<button type="button" class="btn btn-lorvens proclinic-bg"> Create Case</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
 				</div>
 
 			</div>
@@ -350,9 +257,14 @@ require ("head.php");
 	<script src="charts/js/raphael-min.js"></script>
 	<script src="charts/js/morris.min.js"></script>
 	<script src="js/custom-morris.js"></script>
+<!-- Datatable  -->
+<script src="datatable/jquery.dataTables.min.js"></script>
+    <script src="datatable/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom Script-->
 	<script src="js/custom.js"></script>
+    <script src="js/custom-datatables.js"></script>
+
 </body>
 
 

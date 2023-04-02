@@ -10,48 +10,46 @@
         $(".loading").fadeOut("fast");
         $("#snackbar").addClass("show");
     });
-    // scroll to top
-    $(window).on('scroll',function () {
-        if ($(this).scrollTop() > 50) {
-            $('#back-to-top').fadeIn();
-        } else {
-            $('#back-to-top').fadeOut();
-        }
-    });
-    // scroll body to 0px on click
-    $('#back-to-top').on('click',function () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 800);
-        return false;
-    });
-    // scroll to top End
-
-    // theme color change
-	var theme_settings=$(".theme-settings").find(".theme-color");
-    theme_settings.on('click', function() {
-        var val = $(this).attr('data-color');
-        $('#style_theme').attr('href', 'css/' + val + '.css');
-        $(".logo-change").attr('src', 'img/logo-' + val + '.png');
-
-        theme_settings.removeClass('theme-active');
-        theme_settings.addClass('theme-active');
-		return false;
-    });
-    $(".theme-click").on('click', function() {
-        $("#switcher").toggleClass("active");
-		return false;
-    });
-    // theme color change End
 
     // fullscreen function
-    $(".fullscreen").on('click', function(){
-        if(document.webkitCurrentFullScreenElement==null){
+    $(".fullscreen").on('click', function () {
+        if (document.webkitCurrentFullScreenElement == null) {
             document.documentElement.webkitRequestFullScreen();
-        }else{
-            document.webkitCancelFullScreen();   
+        } else {
+            document.webkitCancelFullScreen();
         }
-    }); 
-     // fullscreen function End
+    });
+    // fullscreen function End
 
 })(jQuery);
+
+$(".btnupd").on('click', function () {
+    $.ajax({
+        method: "POST",
+        url: "get-staff.php",
+        dataType: "json",
+        data: { "data": this.id },
+        success: function (data) {
+            $("#updmodal").modal('show');
+            $("#ustaff_name").val(data.name);
+            $("#uphone").val(data.phone);
+            $("#uemail").val(data.email);
+            $("#id").val(data.id);
+            if (data.role == 'doctor') {
+                $("#ustaff_typeD").prop('checked', true);
+            }
+            else if (data.role == 'receptionist') {
+                $("#ustaff_typeR").prop('checked', true);
+            }
+
+        },
+        error: function () {
+            window.alert("Failed");
+        }
+    });
+});
+
+$(".btnnew").on('click', function () {
+    $("#newPatient").show();
+
+});

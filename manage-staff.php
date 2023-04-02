@@ -1,34 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-
-<!-- Mirrored from www.konnectplugins.com/proclinic/Vertical/patients.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2023 05:55:51 GMT -->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ProClinic-Bootstrap4 Hospital Admin</title>
-    <!-- Fav  Icon Link -->
-    <link rel="shortcut icon" type="image/png" href="images/fav.png">
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- themify icons CSS -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- Animations CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/red.css" id="style_theme">
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- morris charts -->
-    <link rel="stylesheet" href="charts/css/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="css/jquery-jvectormap.css">
-    <link rel="stylesheet" href="datatable/dataTables.bootstrap4.min.css">
-
-    <script src="js/modernizr.min.js"></script>
-</head>
+<?php 
+    session_start();
+    if (!isset($_SESSION['email']) || !isset($_SESSION['role']) || $_SESSION['role']!='admin') {
+        header('Location: login.php');
+    }
+	require ("head.php");
+?>
 
 <body>
     <!-- Pre Loader -->
@@ -39,119 +18,19 @@
         </div>
     </div>
     <!--/Pre Loader -->
-    <!-- Color Changer -->
-    <div class="theme-settings" id="switcher">
-        <span class="theme-color theme-default theme-active" data-color="green"></span>
-        <span class="theme-color theme-blue" data-color="blue"></span>
-        <span class="theme-color theme-red" data-color="red"></span>
-        <span class="theme-color theme-violet" data-color="violet"></span>
-        <span class="theme-color theme-yellow" data-color="yellow"></span>
-    </div>
-    <!-- /Color Changer -->
     <div class="wrapper">
         <!-- Sidebar -->
-        <nav id="sidebar" class="proclinic-bg">
-            <div class="sidebar-header">
-                <a href="admin.php"><img src="images/logo.png" class="logo" alt="logo"></a>
-            </div>
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="manage-staff.php">
-                        <span class="ti-user"></span> Manage Staff
-                    </a>
-                </li>
-                <li>
-                    <a href="manage-payment.php">
-                        <span class="ti-money"></span> Manage Payments
-                    </a>
-                </li>
-            </ul>
-            <div class="nav-help animated fadeIn">
-                <h5><span class="ti-comments"></span> Need Help</h5>
-                <h6>
-                    <span class="ti-mobile"></span> +91-9879228567
-                </h6>
-                <h6>
-                    <span class="ti-email"></span> support@ayushya.co.in
-                </h6>
-                <p class="copyright-text">Copy rights &copy; 2023</p>
-            </div>
-        </nav>
+        <?php 
+	        include_once ("admin-nav.html");
+        ?>
         <!-- /Sidebar -->
         <!-- Page Content -->
         <div id="content">
             <!-- Top Navigation -->
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="responsive-logo">
-                        <a href="index.html"><img src="images/logo-dark.png" class="logo" alt="logo"></a>
-                    </div>
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <span class="ti-menu" id="sidebarCollapse"></span>
-                        </li>
-                        <li class="nav-item">
-                            <span title="Fullscreen" class="ti-fullscreen fullscreen"></span>
-                        </li>
-                        <li class="nav-item">
-                            <div class="modal fade proclinic-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog modal-lorvens">
-                                    <div class="modal-content proclinic-box-shadow2">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Search Patient/Doctor:</h5>
-                                            <span class="ti-close" data-dismiss="modal" aria-label="Close">
-                                            </span>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="search-term"
-                                                        placeholder="Type text here">
-                                                    <button type="button" class="btn btn-lorvens proclinic-bg">
-                                                        <span class="ti-location-arrow"></span> Search</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                aria-haspopup="true" aria-expanded="false">
-                                <span class="ti-announcement"></span>
-                            </a>
-                            <div class="dropdown-menu proclinic-box-shadow2 notifications animated flipInY">
-                                <h5>Notifications</h5>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-wheelchair"></span> New Staff Added</a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-money"></span> Staff payment done</a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-time"></span>Staff Appointment booked</a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-wheelchair"></span> New Staff Added</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                aria-haspopup="true" aria-expanded="false">
-                                <span class="ti-user"></span>
-                            </a>
-                            <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                                <h5>John Willing</h5>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-settings"></span> Settings</a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-help-alt"></span> Help</a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="ti-power-off"></span> Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </nav>
+                
+            <?php 
+	            include_once ("top-nav.php");
+            ?>
             <!-- /Top Navigation -->
             <!-- Breadcrumb -->
             <!-- Page Title -->
@@ -192,94 +71,97 @@
                                                     aria-hidden="true">&times;</button>
                                                 <!-- <h4 class="modal-title">Confirmation</h4> -->
                                             </div>
-
                                             <div class="modal-body">
-                                                <form>
+                                                <form action="add-staff.php" method="Post">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="patient-name">Name</label>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="staff_name">Name</label>
                                                             <input type="text" class="form-control"
-                                                                placeholder="Patient name" id="patient-name">
+                                                                placeholder="Staff name" id="staff_name" name="name" required>
                                                         </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="gender">Role</label>
-                                                            <select class="form-control" id="gender">
-                                                                <option>Doctor</option>
-                                                                <option>Receptionist</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-12">
                                                             <label for="phone">Phone</label>
-                                                            <input type="text" placeholder="Phone" class="form-control"
-                                                                id="phone">
+                                                            <input type="number" name="contact" placeholder="Phone" class="form-control"
+                                                                id="phone" min="6000000000" max="9999999999" required>
                                                         </div>
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-md-12">
                                                             <label for="email">Email</label>
-                                                            <input type="email" placeholder="email" class="form-control"
-                                                                id="Email">
+                                                            <input type="email" placeholder="Email" name="email" class="form-control"
+                                                                id="Email" required>
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label for="exampleFormControlTextarea1">Address</label>
-                                                            <textarea placeholder="Address" class="form-control"
-                                                                id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                            <label for="Password">Password</label>
+                                                            <input type="Password" class="form-control" name="pass" id="Password" placeholder="Password" required>
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label for="file">File</label>
-                                                            <input type="file" class="form-control" id="file">
+                                                            <label for="staff_type">Role</label>
+                                                            <input type="radio" name="role" id="staff_typeD" value="doctor" required> Doctor
+                                                            <input type="radio" name="role" id="staff_typeR" value="receptionist"> Receptionist
                                                         </div>
-
-                                                        <div class="form-check col-md-12 mb-2">
-                                                            <div class="text-left">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input class="custom-control-input" type="checkbox"
-                                                                        id="ex-check-2">
-                                                                    <label class="custom-control-label"
-                                                                        for="ex-check-2">Please Confirm</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
+                                                    </div>      
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                <input type="submit" class="btn btn-primary" name="addstaff" value="Save changes">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="testmodal-1" class="modal fade">
+                            </div>
+                            <div class="updstaff">
+                                <div id="updmodal" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">&times;</button>
-                                                <h4 class="modal-title">Confirmation</h4>
+                                                <!-- <h4 class="modal-title">Confirmation</h4> -->
                                             </div>
                                             <div class="modal-body">
-                                                <p>Do you want to save changes you made to document before closing?</p>
-                                                <p class="text-warning"><small>If you don't save, your changes will be
-                                                        lost.</small></p>
+                                                <form action="update-staff.php" method="Post">
+                                                    <div class="form-row">
+                                                        <input type="hidden" id="id" name="id">
+                                                        <div class="form-group col-md-12">
+                                                            <label for="ustaff_name">Name</label>
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Staff name" id="ustaff_name" name="name" required>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="uphone">Phone</label>
+                                                            <input type="number" name="contact" placeholder="Phone" class="form-control"
+                                                                id="uphone" min="6000000000" max="9999999999" required>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="uemail">Email</label>
+                                                            <input type="email" placeholder="Email" name="email" class="form-control"
+                                                                id="uemail" required>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="uPassword">Password</label>
+                                                            <input type="Password" class="form-control" name="pass" id="uPassword" placeholder="Can't change password here" readonly>
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label for="ustaff_type">Role</label>
+                                                            <input type="radio" name="role" id="ustaff_typeD" value="doctor" required> Doctor
+                                                            <input type="radio" name="role" id="ustaff_typeR" value="receptionist"> Receptionist
+                                                        </div>
+                                                    </div>      
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                <input type="submit" class="btn btn-primary" name="addstaff" value="Update changes">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="element" class="addstaff btn btn-info btn-lg btn btn-default show-modal">Add
-                                    Staff
-                                </div>
                             </div>
-                            <!-- <div class="btn btn-default key-disable">show modal whith keyboard disabled</div> -->
-
-
-
-
+                            <div id="element" class="addstaff btn btn-info btn-lg btn btn-default show-modal">Add
+                                Staff
+                            </div>
                             <div class="table-responsive mb-3">
                                 <table id="tableId" class="table table-bordered table-striped">
                                     <thead>
@@ -288,6 +170,7 @@
                                             <th>Sr No.</th>
                                             <th>Name</th>
                                             <th>Role</th>
+                                            <th>Email</th>
                                             <th>Phone Number</th>
                                             <th></th>
                                         </tr>
@@ -296,17 +179,18 @@
                                         <?php
                                         include 'connection.php';
 
-                                        $query = "select *from users where role_name != 'Admin'";
-                                        $result = mysqli_query($conn, $query);
+                                        $query = "select *from user where role != 'admin'";
+                                        $result = $conn->query($query);
                                         $c = 1;
-                                        while ($row = mysqli_fetch_array($result)) {
+                                        while ($row = $result->fetch_assoc()) {
                                             echo "<tr>";
                                             echo "<td>" . $c . "</td>";
                                             echo "<td>" . $row['name'] . "</td>";
-                                            echo "<td>" . $row['role_name'] . "</td>";
-                                            echo "<td>" . $row['contact'] . "</td>";
-                                            echo "<td><div id='element' class='btn btn-default btn btn-primary mt-3 mb-0 show-modal'>Edit Staff</div>";
-                                            echo "<button type='button' class='btn btn-danger mt-3 mb-0'><span class='ti-trash'></span> DELETE</button></td>";
+                                            echo "<td>" . $row['role'] . "</td>";
+                                            echo "<td>" . $row['email'] . "</td>";
+                                            echo "<td>" . $row['phone'] . "</td>";
+                                            echo "<td><button type='button' id='{$row['id']}' class='btn btn-default btn btn-primary mt-3 mb-0 ] btnupd'><span class='ti-pencil' onclick=></span> Edit</button>";
+                                            echo "<button type='button' class='btn btn-danger ml-3 mt-3 mb-0 btndel'><span class='ti-trash'></span> Delete</button></td>";
                                             echo "</tr>";
 
                                             $c++;
@@ -368,7 +252,7 @@
 <script>
     $(document).ready(function () {
         var show_btn = $('.show-modal');
-        var show_btn = $('.show-modal');
+        // var show_btn = $('.show-modal');
         //$("#testmodal").modal('show');
 
         show_btn.click(function () {
@@ -376,15 +260,7 @@
         })
     });
 
-    $(function () {
-        $('#element').on('click', function (e) {
-            Custombox.open({
-                target: '#testmodal-1',
-                effect: 'fadein'
-            });
-            e.preventDefault();
-        });
-    });
+    
 </script>
 
 </html>

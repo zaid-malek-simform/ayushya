@@ -143,8 +143,7 @@ body {
   background-color: #6867e6;
 }
 
-.ayushya,
-body {
+.auth-bg {
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -190,7 +189,7 @@ h6 {
 
 }
 
-button {
+.p-t-10 input[type=submit] {
   background-image: linear-gradient(#bd4f93, #cc5e94, #ec7d9d);
 }
 
@@ -308,7 +307,7 @@ td.active {
   background-color: #2c6ed5;
 }
 
-input[type="date"i] {
+input[type="date" i] {
   padding: 14px;
 }
 
